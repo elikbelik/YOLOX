@@ -23,7 +23,8 @@ def get_model_info(model: nn.Module, tsize: Sequence[int]) -> str:
     from thop import profile
 
     stride = 64
-    img = torch.zeros((1, 3, stride, stride), device=next(model.parameters()).device)
+    model_dtype = next(model.parameters()).dtype
+    img = torch.zeros((1, 3, stride, stride), device=next(model.parameters()).device, dtype=model_dtype)
     flops, params = profile(deepcopy(model), inputs=(img,), verbose=False)
     params /= 1e6
     flops /= 1e9

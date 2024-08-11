@@ -52,7 +52,7 @@ class COCODataset(CacheDataset):
             data_dir (str): dataset root directory
             json_file (str): COCO json file name
             name (str): COCO data name (e.g. 'train2017' or 'val2017')
-            img_size (int): target image size after pre-processing
+            img_size (tuple): (width,height) tuple with default dimensions of the network
             preproc: data augmentation strategy
         """
         if data_dir is None:
